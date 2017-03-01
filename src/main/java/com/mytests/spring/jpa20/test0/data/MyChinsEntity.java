@@ -10,7 +10,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "chins", schema = "jbtests")
-@NamedQuery(name = "MyChinsEntity.secondQuery", query = "select c from MyChinsEntity c where c.weight <= ?1")
+@NamedQueries({
+@NamedQuery(name = "MyChinsEntity.secondQuery", query = "select c from MyChinsEntity c where c.weight <= ?1"),
+@NamedQuery(name = "MyChinsEntity.firstQuery", query = "select c from MyChinsEntity c")})
 public class MyChinsEntity {
     private int id;
     private String name;

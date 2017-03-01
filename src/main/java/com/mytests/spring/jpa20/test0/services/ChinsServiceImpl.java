@@ -4,6 +4,7 @@ import com.mytests.spring.jpa20.test0.data.MyChinsEntity;
 import com.mytests.spring.jpa20.test0.repositories.ChinsRepository;
 import com.mytests.spring.jpa20.test0.repositories.ChinchillasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -74,6 +75,16 @@ public class ChinsServiceImpl implements ChinsService {
     @Override
     public List<MyChinsEntity> findByWeightAndSex(int weight, String sex) {
         return chinchillasRepository.weightAndSexOrderByForSale(weight,sex);
+    }
+
+    @Override
+    public List<MyChinsEntity> findByColorAndSort(String colorPattern, Sort sort) {
+        return chinsRepository.sortedChinsByColorPattern(colorPattern, sort);
+    }
+
+    @Override
+    public int testProcedure(String a1, String a2) {
+        return chinchillasRepository.test3Procedure(a1,a2, chinchillasRepository.countTab1Procedure()+1);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.mytests.spring.jpa20.test0.services;
 
 import com.mytests.spring.jpa20.test0.data.MyChinsEntity;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface ChinsService {
     MyChinsEntity findChinByName(String name);
     List<MyChinsEntity> findSmallOnes(int weight);
     List<MyChinsEntity> findByWeightAndSex(int weight, String sex);
+    List<MyChinsEntity> findByColorAndSort(String colorPattern, Sort sort);
+    int testProcedure(String a1, String a2);
 }

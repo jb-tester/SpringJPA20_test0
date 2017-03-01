@@ -6,8 +6,8 @@ import com.mytests.spring.jpa20.test0.repositories.ChinsRepository;
 import com.mytests.spring.jpa20.test0.services.ChinsService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.domain.Sort;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -52,6 +52,14 @@ public class RunTest {
         for (MyChinsEntity sg : fatGirls) {
             System.out.println(sg.toString());
         }
+        System.out.println("========= sorted ebony chinchillas:");
+        List<MyChinsEntity> sortedBoys = service.findByColorAndSort("ebony", new Sort("name"));
+        for (MyChinsEntity sb : sortedBoys) {
+            System.out.println(sb.toString());
+        }
+        System.out.println("========= procedure test:");
+        int test = service.testProcedure("name1", "surname1");
+        System.out.println(test);
     }
 
 }

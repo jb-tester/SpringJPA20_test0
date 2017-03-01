@@ -2,6 +2,7 @@ package com.mytests.spring.jpa20.test0.repositories;
 
 import com.mytests.spring.jpa20.test0.data.MyChinsEntity;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -14,7 +15,9 @@ import java.util.List;
  * *******************************
  */
 public interface ChinchillasRepository extends CrudRepository<MyChinsEntity,Integer> {
+
     List<MyChinsEntity> weightAndSexOrderByForSale(int weight, String sex);
+
     List<MyChinsEntity> readFooSexBarBySex(String sex);
 
     /**
@@ -25,12 +28,21 @@ public interface ChinchillasRepository extends CrudRepository<MyChinsEntity,Inte
      */
     List<MyChinsEntity> getMyChinsEntitiesBySexEqualsAndColorContainsOrColorContains(String sex, String color, String color2);
 
-    @Query(value = "select c from MyChinsEntity c where c.name = :name", name = "first")
+    @Query(value = "select c from MyChinsEntity c where c.name = :name", name = "MyChinsEntity.firstQuery")
     MyChinsEntity firstQuery(@Param("name")String name);
+
     /**
     * for the named query MyChinsEntity.secondQuery
     */
     List<MyChinsEntity> secondQuery(int weight);
 
+    @Procedure(procedureName = "countTab1")
+    Integer countTab1Procedure();
 
+    @Procedure(procedureName = "test3", outputParameterName = "arg3")
+    Integer test3Procedure(@Param("arg1")String arg1,@Param("arg2") String arg2, @Param("arg3") Integer arg3);
+
+    default void method1() {
+        System.out.println("===default method method1===");;
+    }
 }
