@@ -6,6 +6,7 @@ import com.mytests.spring.jpa20.test0.repositories.ChinsRepository;
 import com.mytests.spring.jpa20.test0.services.ChinsService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -56,6 +57,21 @@ public class RunTest {
         List<MyChinsEntity> sortedBoys = service.findByColorAndSort("ebony", new Sort("name"));
         for (MyChinsEntity sb : sortedBoys) {
             System.out.println(sb.toString());
+        }
+        System.out.println("========= native query test:");
+        Page<MyChinsEntity> nativeSortedBoys = service.nativeQueryTest1();
+        for (MyChinsEntity sb : nativeSortedBoys) {
+            System.out.println(sb.toString());
+        }
+        System.out.println("========= native query test2:");
+        Page<MyChinsEntity> nativeSortedBoys2 = service.nativeQueryTest2();
+        for (MyChinsEntity sb : nativeSortedBoys2) {
+            System.out.println(sb.toString());
+        }
+        System.out.println("========= named native query test:");
+        List<MyChinsEntity> nChins = service.testNativeNamedQuery(10);
+        for (MyChinsEntity ccc : nChins ) {
+            System.out.println(ccc.toString());
         }
         System.out.println("========= procedure test:");
         int test = service.testProcedure("name1", "surname1");

@@ -4,6 +4,8 @@ import com.mytests.spring.jpa20.test0.data.MyChinsEntity;
 import com.mytests.spring.jpa20.test0.repositories.ChinsRepository;
 import com.mytests.spring.jpa20.test0.repositories.ChinchillasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -85,6 +87,20 @@ public class ChinsServiceImpl implements ChinsService {
     @Override
     public int testProcedure(String a1, String a2) {
         return chinchillasRepository.test3Procedure(a1,a2, chinchillasRepository.countTab1Procedure()+1);
+    }
+
+    @Override
+    public Page<MyChinsEntity> nativeQueryTest1() {
+        return chinsRepository.nativeQuerySorted("male", new PageRequest(1,3));
+    }
+    @Override
+    public Page<MyChinsEntity> nativeQueryTest2() {
+        return chinsRepository.nativeQuerySorted2("male", new PageRequest(0,3));
+    }
+
+    @Override
+    public List<MyChinsEntity> testNativeNamedQuery(int id){
+        return chinchillasRepository.firstNativeQuery(id);
     }
 
 }

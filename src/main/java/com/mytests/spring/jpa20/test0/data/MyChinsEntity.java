@@ -11,9 +11,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "chins", schema = "jbtests")
 @NamedQueries({
-@NamedQuery(name = "MyChinsEntity.secondQuery", query = "select c from MyChinsEntity c where c.weight <= ?1"),
-@NamedQuery(name = "MyChinsEntity.firstQuery", query = "select c from MyChinsEntity c")})
+   @NamedQuery(name = "MyChinsEntity.secondQuery", query = "select c from MyChinsEntity c where c.weight <= ?1"),
+   @NamedQuery(name = "MyChinsEntity.firstQuery", query = MyChinsEntity.EXPR1)
+})
+@NamedNativeQueries({
+        @NamedNativeQuery(query = "SELECT * FROM chins WHERE id >?", name = "MyChinsEntity.secondNativeQuery", resultClass = MyChinsEntity.class),
+        @NamedNativeQuery(query = MyChinsEntity.EXPR2, name = "MyChinsEntity.firstNativeQuery", resultClass = MyChinsEntity.class)
+
+})
 public class MyChinsEntity {
+    static final String EXPR2 = "SELECT id, name, color, birthday, weight, sex, forSale FROM chins WHERE id < ?1";
+    static final String EXPR1 = "select c from MyChinsEntity c";
     private int id;
     private String name;
     private String color;

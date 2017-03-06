@@ -36,12 +36,19 @@ public interface ChinchillasRepository extends CrudRepository<MyChinsEntity,Inte
     */
     List<MyChinsEntity> secondQuery(int weight);
 
+    /**
+     * for the named query MyChinsEntity.firstNativeQuery
+     */
+    List<MyChinsEntity> firstNativeQuery(int id);
+
     @Procedure(procedureName = "countTab1")
     Integer countTab1Procedure();
 
     @Procedure(procedureName = "test3", outputParameterName = "arg3")
     Integer test3Procedure(@Param("arg1")String arg1,@Param("arg2") String arg2, @Param("arg3") Integer arg3);
 
+    @Query(value = "INSERT into chins(id, name, color, birthday, weight, sex, forSale) VALUES (20, '', '', '', '', 0, '')",
+            nativeQuery = true)
     default void method1() {
         System.out.println("===default method method1===");;
     }
