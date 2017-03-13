@@ -3,7 +3,6 @@ package com.mytests.spring.jpa20.test0.repositories;
 import com.mytests.spring.jpa20.test0.data.MyChinsEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  * Project: SpringJPA20_test0
  * *******************************
  */
-public interface ChinchillasRepository extends CrudRepository<MyChinsEntity,Integer> {
+public interface ChinchillasRepository extends MyBaseIntermediateRepository<MyChinsEntity,Integer> {
 
     List<MyChinsEntity> weightAndSexOrderByForSale(int weight, String sex);
 
