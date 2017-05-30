@@ -20,6 +20,7 @@ import java.util.List;
 public interface ChinsRepository
 {
 
+    List<MyChinsEntity> findAllByOrderByColorAscNameAsc();
 
     List<MyChinsEntity> findAll();
 

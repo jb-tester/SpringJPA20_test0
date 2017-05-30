@@ -29,4 +29,6 @@ public interface ChinsService {
     Page<MyChinsEntity> nativeQueryTest2();
 
     List<MyChinsEntity> testNativeNamedQuery(int id);
+
+    List<MyChinsEntity> testAllOrdered();
 }

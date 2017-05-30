@@ -103,4 +103,9 @@ public class ChinsServiceImpl implements ChinsService {
         return chinchillasRepository.firstNativeQuery(id);
     }
 
+    @Override
+    public List<MyChinsEntity> testAllOrdered() {
+        return chinsRepository.findAllByOrderByColorAscNameAsc();
+    }
+
 }
