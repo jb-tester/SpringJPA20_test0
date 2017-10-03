@@ -108,4 +108,12 @@ public class ChinsServiceImpl implements ChinsService {
         return chinsRepository.findAllByOrderByColorAscNameAsc();
     }
 
+    @Override
+    public boolean checkExistsQueries() {
+
+        boolean rez0 = chinsRepository.existsByNameContaining("ma").size()>0;
+        Boolean rez1 = chinsRepository.existsByNameEndsWithAndColorContains("k","white");
+        return rez1 & rez0;
+    }
+
 }

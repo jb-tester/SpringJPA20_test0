@@ -28,6 +28,9 @@ public interface ChinsRepository
 
     MyChinsEntity findById(int id);
 
+    Boolean existsByNameEndsWithAndColorContains(String name, String color);
+    List<MyChinsEntity> existsByNameContaining(String name);
+
     @Query(value = "select u from MyChinsEntity u where u.color like %?1%")
     List<MyChinsEntity> sortedChinsByColorPattern(String colorPattern, Sort sort);
 

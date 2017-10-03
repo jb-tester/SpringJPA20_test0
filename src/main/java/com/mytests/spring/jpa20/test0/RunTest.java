@@ -76,11 +76,14 @@ public class RunTest {
         System.out.println("========= procedure test:");
         int test = service.testProcedure("name1", "surname1");
         System.out.println(test);
+
         System.out.println("========= findAllByOrderByName test:");
         List<MyChinsEntity> orderedChins = service.testAllOrdered();
         for (MyChinsEntity ccc : orderedChins ) {
             System.out.println(ccc.toString());
         }
+        System.out.println("============exists tests:");
+        System.out.println(service.checkExistsQueries());
     }
 
 }

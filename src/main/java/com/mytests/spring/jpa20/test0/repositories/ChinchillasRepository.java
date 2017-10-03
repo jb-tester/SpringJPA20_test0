@@ -51,4 +51,5 @@ public interface ChinchillasRepository extends MyBaseIntermediateRepository<MyCh
     default void method1() {
         System.out.println("===default method method1===");;
     }
+
 }

@@ -31,4 +31,6 @@ public interface ChinsService {
     List<MyChinsEntity> testNativeNamedQuery(int id);
 
     List<MyChinsEntity> testAllOrdered();
+
+    boolean checkExistsQueries();
 }
