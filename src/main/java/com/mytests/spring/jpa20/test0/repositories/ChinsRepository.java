@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -33,6 +34,10 @@ public interface ChinsRepository
 
     @Query(value = "select u from MyChinsEntity u where u.color like %?1%")
     List<MyChinsEntity> sortedChinsByColorPattern(String colorPattern, Sort sort);
+
+    @Query(value = "select u from MyChinsEntity u where u.color like %:pattern% " )
+    List<MyChinsEntity> sortedChinsByColorPattern2(@Param("pattern") String colorPattern, Sort sort);
+
 
 
     String EXPR1 = "SELECT count(*) FROM chins WHERE sex = ?1";

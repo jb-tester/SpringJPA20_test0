@@ -27,8 +27,8 @@ public interface ChinchillasRepository extends MyBaseIntermediateRepository<MyCh
      */
     List<MyChinsEntity> getMyChinsEntitiesBySexEqualsAndColorContainsOrColorContains(String sex, String color, String color2);
 
-    @Query(value = "select c from MyChinsEntity c where c.name = :name", name = "MyChinsEntity.firstQuery")
-    MyChinsEntity firstQuery(@Param("name")String name);
+    @Query(value = "select c from MyChinsEntity c where c.name = :chinName", name = "MyChinsEntity.firstQuery")
+    MyChinsEntity firstQuery(@Param("chinName")String name);
 
     /**
     * for the named query MyChinsEntity.secondQuery
