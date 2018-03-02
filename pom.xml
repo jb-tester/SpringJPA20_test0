@@ -15,7 +15,7 @@
         <!-- <validation-api.version>1.0.0.GA</validation-api.version>-->
         <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
         <!--<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>-->
-        <spring.version>5.0.0.RC1</spring.version>
+        <spring.version>5.0.4.RELEASE</spring.version>
     </properties>
     <dependencies>
         <dependency>
