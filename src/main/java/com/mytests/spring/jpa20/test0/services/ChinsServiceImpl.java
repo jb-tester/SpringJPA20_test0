@@ -63,11 +63,7 @@ public class ChinsServiceImpl implements ChinsService {
         return chinsRepository.findById(id);
     }
 
-    @Override
-    public MyChinsEntity findChinByName(String name) {
 
-        return chinchillasRepository.firstQuery(name);
-    }
 
     @Override
     public List<MyChinsEntity> findSmallOnes(int weight) {
@@ -114,6 +110,13 @@ public class ChinsServiceImpl implements ChinsService {
         boolean rez0 = chinsRepository.existsByNameContaining("ma").size()>0;
         Boolean rez1 = chinsRepository.existsByNameEndsWithAndColorContains("k","white");
         return rez1 & rez0;
+    }
+
+    @Override
+    public MyChinsEntity checkNamedQueryReferencedByExplicitName() {
+
+        MyChinsEntity rez = chinchillasRepository.testThirdQuery("Bublik");
+        return rez;
     }
 
 }

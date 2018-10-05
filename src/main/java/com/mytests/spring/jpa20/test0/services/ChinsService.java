@@ -19,7 +19,7 @@ public interface ChinsService {
     List<MyChinsEntity> listGirls();
     List<MyChinsEntity> listBlackBoys();
     MyChinsEntity findChinById(int id);
-    MyChinsEntity findChinByName(String name);
+
     List<MyChinsEntity> findSmallOnes(int weight);
     List<MyChinsEntity> findByWeightAndSex(int weight, String sex);
     List<MyChinsEntity> findByColorAndSort(String colorPattern, Sort sort);
@@ -33,4 +33,6 @@ public interface ChinsService {
     List<MyChinsEntity> testAllOrdered();
 
     boolean checkExistsQueries();
+
+    MyChinsEntity checkNamedQueryReferencedByExplicitName();
 }

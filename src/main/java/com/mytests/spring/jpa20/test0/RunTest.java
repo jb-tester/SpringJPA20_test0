@@ -40,9 +40,7 @@ public class RunTest {
         for (MyChinsEntity bb : bbs) {
             System.out.println(bb.toString());
         }
-        System.out.println("========= Bublik:");
-        MyChinsEntity bublik = service.findChinByName("Bublik");
-        System.out.println(bublik.toString());
+
         System.out.println("========= small chinchillas:");
         List<MyChinsEntity> smalls = service.findSmallOnes(500);
         for (MyChinsEntity small : smalls) {
@@ -84,6 +82,10 @@ public class RunTest {
         }
         System.out.println("============exists tests:");
         System.out.println(service.checkExistsQueries());
+
+        System.out.println("============named query test:");
+        System.out.println(service.checkNamedQueryReferencedByExplicitName().getName());
+
     }
 
 }

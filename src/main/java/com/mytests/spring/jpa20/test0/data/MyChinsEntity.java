@@ -12,7 +12,8 @@ import javax.persistence.*;
 @Table(name = "chins", schema = "jbtests")
 @NamedQueries({
    @NamedQuery(name = "MyChinsEntity.secondQuery", query = "select c from MyChinsEntity c where c.weight <= ?1"),
-   @NamedQuery(name = "MyChinsEntity.firstQuery", query = MyChinsEntity.EXPR1)
+   @NamedQuery(name = "MyChinsEntity.firstQuery", query = MyChinsEntity.EXPR1),
+        @NamedQuery(name = "thirdQuery", query = "select c from MyChinsEntity c where c.name = ?1")
 })
 @NamedNativeQueries({
         @NamedNativeQuery(query = "SELECT * FROM chins WHERE id >?", name = "MyChinsEntity.secondNativeQuery", resultClass = MyChinsEntity.class),
